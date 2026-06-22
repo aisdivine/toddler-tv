@@ -1,0 +1,32 @@
+{
+  "name": "toddler-tv",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "render": "tsx scripts/render.ts",
+    "render:test": "tsx scripts/render.ts --seconds 5",
+    "render:preview": "tsx scripts/render.ts --scale 0.5 --seconds 30",
+    "encode": "tsx scripts/encode.ts",
+    "video": "npm run render && npm run encode",
+    "video:test": "tsx scripts/render.ts --seconds 5 && tsx scripts/encode.ts --name test",
+    "mux": "tsx scripts/encode.ts --mux"
+  },
+  "dependencies": {
+    "pixi.js": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "playwright": "^1.48.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  },
+  "license": "MIT"
+}

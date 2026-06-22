@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1b2440" />
+    <title>Toddler TV — Let's Count!</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #0e1530;
+        overflow: hidden;
+      }
+      #stage {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+      }
+      #hint {
+        position: fixed;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        font: 13px/1.4 system-ui, sans-serif;
+        color: #ffffffaa;
+        background: #00000055;
+        padding: 4px 10px;
+        border-radius: 8px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <div id="hint">space = pause · ← → scrub · R restart</div>
+    <script type="module" src="/src/preview.ts"></script>
+  </body>
+</html>

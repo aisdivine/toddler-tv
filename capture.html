@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toddler TV — capture</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #0e1530;
+      }
+      /* The capture canvas is locked at exactly 1920x1080 — no fit-to-window. */
+      #stage canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <script type="module" src="/src/capture.ts"></script>
+  </body>
+</html>
