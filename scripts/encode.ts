@@ -29,10 +29,17 @@ async function encode(argv: string[]): Promise<void> {
   if (!existsSync(frames) || readdirSync(frames).filter((f) => f.endsWith('.png')).length === 0) {
     throw new Error(`No PNG frames in ${frames}. Run "npm run render" first.`);
   }
+  // Support frame windows that don't start at 0 (e.g. `render --from`).
+  const nums = readdirSync(frames)
+    .filter((f) => /^f_\d+\.png$/.test(f))
+    .map((f) => Number(f.slice(2, -4)));
+  const startNumber = Math.min(...nums);
+
   const out = `out/${name}.mp4`;
   await run('ffmpeg', [
     '-y',
     '-framerate', String(FPS),
+    '-start_number', String(startNumber),
     '-i', `${frames}/f_%06d.png`,
     '-c:v', 'libx264',
     '-pix_fmt', 'yuv420p',

@@ -77,15 +77,43 @@ npm run mux -- path/to/music.mp3        # → out/counting_music.mp4
   rainbow). Add your own curve generator there and drop it in the `EFFECTS` list.
 - Colors: `src/engine/palette.ts`.
 
+## Characters (archetypes)
+
+Reusable creatures drawn from math primitives live in `src/characters/`. Each
+exports a `CharacterArchetype` (`id`, `name`, `defaultColor`, `draw(...)`) and is
+registered in `src/characters/index.ts`. Current cast: **owl, cat, dog, bunny**.
+
+Use one anywhere:
+
+```ts
+import { ARCHETYPES, idlePose, talkEnvelope } from './characters';
+
+ARCHETYPES.cat.draw(g, x, y, scale, ARCHETYPES.cat.defaultColor, {
+  ...idlePose(t),            // bob, blink, glance, ear wiggle
+  talk: talkEnvelope(t),     // 0..1 mouth flap in a speech rhythm
+});
+```
+
+Pose fields (`CharacterPose`): `talk`, `blink`, `lookX`, `lookY`, `bob`, `earWiggle`
+— all 0..1 / pixels, all pure functions of `t`. `src/characters/expression.ts`
+provides `talkEnvelope` / `blinkEnvelope` / `idlePose`; `face.ts` has shared
+`drawEye` / `drawMouth`. The cast auto-appears in `castScene` (the "meet the cast"
+beat) — add a new `src/characters/<name>.ts`, list it in `index.ts`, and it shows up.
+
+**Voice:** characters are silent; their mouths just move in a believable rhythm.
+Add your voiceover in your editor. (For exact lip-sync to your own recording, a
+per-frame loudness envelope can drive `talk` — same deterministic approach.)
+
 ## Project layout
 
 ```
-src/engine/   types, timeline, easing, seeded rng, color palette
-src/draw/     math primitives, procedural digit glyphs, countable shapes
-src/scenes/   intro, countScene (core), recap, outro, shared background
-src/render/   PixiJS stage + the shared frame driver
-src/video.ts  the timeline (which scenes, in what order, how long)
-scripts/      render.ts (capture) + encode.ts (ffmpeg)
+src/engine/      types, timeline, easing, seeded rng, color palette
+src/draw/        math primitives, digit glyphs, countable shapes, parametric curves
+src/characters/  reusable animal archetypes (owl/cat/dog/bunny) + face + expression
+src/scenes/      intro, curves & cast & owl bumpers, countScene (core), recap, outro
+src/render/      PixiJS stage + the shared frame driver
+src/video.ts     the timeline (which scenes, in what order, how long)
+scripts/         render.ts (capture, supports --from/--seconds/--scale) + encode.ts
 ```
 
 Tests: `npm test` (vitest) covers the timeline math and frame determinism.

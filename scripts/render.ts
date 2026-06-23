@@ -17,6 +17,7 @@ import { FPS, WIDTH, HEIGHT } from '../src/engine/types';
 
 interface Args {
   seconds?: number;
+  from?: number; // start offset in seconds (for fast iteration on one window)
   scale: number;
   out: string;
   resume: boolean;
@@ -27,6 +28,7 @@ function parseArgs(argv: string[]): Args {
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i];
     if (k === '--seconds') a.seconds = Number(argv[++i]);
+    else if (k === '--from') a.from = Number(argv[++i]);
     else if (k === '--scale') a.scale = Number(argv[++i]);
     else if (k === '--out') a.out = argv[++i];
     else if (k === '--resume') a.resume = true;
@@ -67,20 +69,24 @@ async function main(): Promise<void> {
   await page.waitForFunction('window.__ready === true', undefined, { timeout: 30000 });
 
   const total: number = await page.evaluate('window.__totalFrames');
-  const limit = args.seconds ? Math.min(total, Math.round(args.seconds * FPS)) : total;
+  const startFrame = args.from ? Math.min(total - 1, Math.round(args.from * FPS)) : 0;
+  const count = args.seconds ? Math.round(args.seconds * FPS) : total - startFrame;
+  const limit = Math.min(total, startFrame + count);
   console.log(
-    `Rendering ${limit}/${total} frames at ${w}×${h} (${(limit / FPS).toFixed(1)}s) → ${outDir}`,
+    `Rendering frames ${startFrame}..${limit - 1} of ${total} at ${w}×${h} ` +
+      `(${((limit - startFrame) / FPS).toFixed(1)}s) → ${outDir}`,
   );
 
   const canvas = page.locator('#stage canvas');
   const t0 = Date.now();
-  for (let i = 0; i < limit; i++) {
+  for (let i = startFrame; i < limit; i++) {
     const path = join(outDir, `f_${String(i).padStart(6, '0')}.png`);
     if (args.resume && existsSync(path)) continue;
     await page.evaluate((n) => window.__renderFrame(n), i);
     await canvas.screenshot({ path });
     if (i % 60 === 0 || i === limit - 1) {
-      const fps = (i + 1) / ((Date.now() - t0) / 1000);
+      const done = i - startFrame + 1;
+      const fps = done / ((Date.now() - t0) / 1000);
       const eta = ((limit - i - 1) / Math.max(fps, 0.01)).toFixed(0);
       console.log(`  frame ${i + 1}/${limit}  (${fps.toFixed(1)} fps, ~${eta}s left)`);
     }
