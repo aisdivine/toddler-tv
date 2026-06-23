@@ -71,6 +71,10 @@ npm run mux -- path/to/music.mp3        # → out/counting_music.mp4
 - Length: edit `COUNT_SECS` in `src/video.ts`.
 - New numbers/scenes: add to the `scenes` array in `src/video.ts`.
 - New countable shapes: add a case to `drawShape` in `src/draw/shapes.ts`.
+- New parametric effects: the curves bumper (`src/scenes/curvesScene.ts`) shows
+  spirographs, Lissajous figures, rose curves and morphing polygons, all from
+  `src/draw/curves.ts` (each is a `θ → (x,y)` function strokes-rendered in
+  rainbow). Add your own curve generator there and drop it in the `EFFECTS` list.
 - Colors: `src/engine/palette.ts`.
 
 ## Project layout

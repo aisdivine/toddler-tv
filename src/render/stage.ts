@@ -30,6 +30,9 @@ export async function createStage(opts: StageOptions = {}): Promise<Stage> {
     autoDensity: false,
     antialias: true,
     preserveDrawingBuffer: true,
+    // Force WebGL: our custom shaders ship a GLSL program (GlProgram), and a
+    // single GL backend keeps output identical across machines / headless CI.
+    preference: 'webgl',
     // Drive rendering ourselves, frame by frame — no shared ticker autoStart.
     autoStart: false,
   });

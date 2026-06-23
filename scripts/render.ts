@@ -58,6 +58,10 @@ async function main(): Promise<void> {
     deviceScaleFactor: 1,
   });
   page.on('pageerror', (e) => console.error('[page error]', e.message));
+  page.on('console', (m) => {
+    const type = m.type();
+    if (type === 'error' || type === 'warning') console.error(`[browser ${type}]`, m.text());
+  });
 
   await page.goto(`${base}capture.html?scale=${args.scale}`);
   await page.waitForFunction('window.__ready === true', undefined, { timeout: 30000 });
