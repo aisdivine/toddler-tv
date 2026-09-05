@@ -1,0 +1,161 @@
+{
+  "entries": [
+    {
+      "ts": "2026-09-05T21:51:12.154Z",
+      "kind": "still",
+      "id": "cast/dino.jpg",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0397842
+    },
+    {
+      "ts": "2026-09-05T21:51:22.159Z",
+      "kind": "still",
+      "id": "cast/caterpillar.jpg",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0397881
+    },
+    {
+      "ts": "2026-09-05T21:51:45.874Z",
+      "kind": "still",
+      "id": "s1",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389838
+    },
+    {
+      "ts": "2026-09-05T21:51:55.810Z",
+      "kind": "still",
+      "id": "s2",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389823
+    },
+    {
+      "ts": "2026-09-05T21:52:07.436Z",
+      "kind": "still",
+      "id": "s3",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.038982
+    },
+    {
+      "ts": "2026-09-05T21:52:18.516Z",
+      "kind": "still",
+      "id": "s4",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389832
+    },
+    {
+      "ts": "2026-09-05T21:52:29.995Z",
+      "kind": "still",
+      "id": "s5",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389805
+    },
+    {
+      "ts": "2026-09-05T21:52:41.958Z",
+      "kind": "still",
+      "id": "s6",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389826
+    },
+    {
+      "ts": "2026-09-05T21:52:52.813Z",
+      "kind": "still",
+      "id": "s7",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389826
+    },
+    {
+      "ts": "2026-09-05T21:53:03.941Z",
+      "kind": "still",
+      "id": "s8",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389823
+    },
+    {
+      "ts": "2026-09-05T21:54:06.761Z",
+      "kind": "still",
+      "id": "s2",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.038994
+    },
+    {
+      "ts": "2026-09-05T21:54:18.966Z",
+      "kind": "still",
+      "id": "s7",
+      "model": "google/gemini-2.5-flash-image",
+      "cost": 0.0389949
+    },
+    {
+      "ts": "2026-09-05T21:55:36.298Z",
+      "kind": "clip",
+      "id": "s2",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:55:42.763Z",
+      "kind": "clip",
+      "id": "s1",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:55:42.827Z",
+      "kind": "clip",
+      "id": "s4",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:55:43.985Z",
+      "kind": "clip",
+      "id": "s3",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:56:33.746Z",
+      "kind": "clip",
+      "id": "s5",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:56:37.927Z",
+      "kind": "clip",
+      "id": "s7",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:56:38.555Z",
+      "kind": "clip",
+      "id": "s8",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:56:48.759Z",
+      "kind": "clip",
+      "id": "s6",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    },
+    {
+      "ts": "2026-09-05T21:59:25.004Z",
+      "kind": "clip",
+      "id": "s2",
+      "model": "google/veo-3.1-lite",
+      "seconds": 8,
+      "cost": 0.4
+    }
+  ],
+  "total": 4.0694
+}

@@ -1,0 +1,8 @@
+# Per-shot clips are regenerable from stills/ for ~$3.60 — the assembled
+# episode is force-added instead. Scratch QC frames are not worth keeping.
+clips/
+out/fs/
+out/fs_*.jpg
+out/chk_*.jpg
+out/contact*.jpg
+out/list.txt
